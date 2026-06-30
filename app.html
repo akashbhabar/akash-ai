@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forge &amp; Loop — Shopify, AI &amp; Custom Software Development</title>
+<meta name="description" content="Forge & Loop builds Shopify stores, AI agents, and custom software for ambitious commerce and SaaS teams. Book a free consultation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF;
+  --bg-soft:#F6F8FC;
+  --bg-card:#FFFFFF;
+  --bg-tint:#EEF3FF;
+  --border:#E6EAF2;
+  --border-strong:#D7DEEC;
+  --fg:#0B1220;
+  --fg-muted:#5A6478;
+  --fg-faint:#8A93A6;
+  --accent:#0B5FFF;
+  --accent-hover:#0048D6;
+  --accent-soft:#3D7BFF;
+  --accent-tint:#E7F0FF;
+  --accent-dim:rgba(11,95,255,.10);
+  --font-display:'Bricolage Grotesque','Plus Jakarta Sans',sans-serif;
+  --font-body:'Plus Jakarta Sans',sans-serif;
+  --radius-xl:28px;
+  --radius-lg:22px;
+  --radius-md:16px;
+  --radius-sm:12px;
+  --radius-pill:999px;
+  --container:1180px;
+  --section-pad:120px;
+  --shadow-sm:0 1px 2px rgba(16,24,40,.04),0 1px 3px rgba(16,24,40,.06);
+  --shadow-md:0 6px 16px -6px rgba(16,24,40,.12),0 2px 6px rgba(16,24,40,.05);
+  --shadow-lg:0 24px 48px -24px rgba(11,95,255,.28),0 8px 24px -12px rgba(16,24,40,.12);
+}
+@media(max-width:768px){:root{--section-pad:76px;}}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+input,select,textarea{font-family:inherit;font-size:.95rem;color:var(--fg);background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.85rem 1rem;width:100%;outline:none;transition:border-color .2s,box-shadow .2s;}
+input::placeholder,textarea::placeholder{color:var(--fg-faint);}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-dim);}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;letter-spacing:-.025em;line-height:1.08;color:var(--fg);}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important;}}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-tint);padding:.4rem .85rem;border-radius:var(--radius-pill);margin-bottom:1.2rem;}
+.accent-text{color:var(--accent);}
+.section{max-width:var(--container);margin:0 auto;padding:var(--section-pad) 24px;}
+.section-tight{padding-top:84px;padding-bottom:84px;}
+.section-head{max-width:680px;margin:0 auto 60px;text-align:center;}
+.section-head.left{margin-left:0;text-align:left;}
+.section-title{font-size:clamp(1.9rem,3.6vw,2.8rem);margin-bottom:1rem;letter-spacing:-.03em;}
+.section-sub{color:var(--fg-muted);font-size:1.08rem;max-width:580px;margin:0 auto;}
+.section-head.left .section-sub{margin:0;}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:.92rem;padding:.8rem 1.5rem;transition:transform .18s,box-shadow .18s,background .18s,border-color .18s,color .18s;white-space:nowrap;}
+.btn-pill{border-radius:var(--radius-pill);}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 1px 2px rgba(11,95,255,.25);}
+.btn-primary:hover{background:var(--accent-hover);box-shadow:0 8px 20px -6px rgba(11,95,255,.5);transform:translateY(-1px);}
+.btn-ghost{background:#fff;border:1px solid var(--border-strong);color:var(--fg);}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);box-shadow:var(--shadow-sm);}
+.btn-lg{padding:1rem 1.9rem;font-size:.98rem;}
+.btn-full{width:100%;margin-top:1.5rem;}
+@media(max-width:560px){.btn-full-mobile{width:100%;}}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 24px;transition:background .3s,border-color .3s,box-shadow .3s;border-bottom:1px solid transparent;}
+.nav.is-scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom-color:var(--border);box-shadow:var(--shadow-sm);}
+.nav-inner{max-width:var(--container);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:1.08rem;letter-spacing:-.02em;}
+.logo-mark{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:var(--accent);color:#fff;font-size:.74rem;box-shadow:0 4px 10px -2px rgba(11,95,255,.5);}
+.nav-links{display:flex;align-items:center;gap:34px;font-size:.92rem;font-weight:500;color:var(--fg-muted);}
+.nav-links a:hover{color:var(--fg);}
+.nav-toggle{display:none;flex-direction:column;gap:5px;width:28px;}
+.nav-toggle span{display:block;height:2px;background:var(--fg);border-radius:2px;}
+@media(max-width:880px){
+  .nav-links{display:none;}.nav-cta{display:none;}.nav-toggle{display:flex;}
+  .nav-links.is-open{display:flex;flex-direction:column;align-items:flex-start;position:fixed;top:62px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:22px 24px;gap:16px;box-shadow:var(--shadow-md);}
+  .nav-cta.is-open{display:flex;position:fixed;top:calc(62px + 198px);left:24px;right:24px;}
+  .nav-cta.is-open .btn{width:100%;}
+}
+
+.hero{position:relative;padding:172px 24px 96px;max-width:var(--container);margin:0 auto;text-align:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;background:
+  radial-gradient(680px 360px at 50% -8%,rgba(11,95,255,.12),transparent 70%),
+  radial-gradient(420px 320px at 12% 18%,rgba(61,123,255,.08),transparent 70%);
+  pointer-events:none;}
+.hero-grid-lines{position:absolute;inset:0;z-index:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(560px 400px at 50% 0%,#000,transparent 75%);-webkit-mask-image:radial-gradient(560px 400px at 50% 0%,#000,transparent 75%);opacity:.6;pointer-events:none;}
+.hero-inner{position:relative;z-index:1;max-width:820px;margin:0 auto;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:var(--radius-pill);padding:.4rem .4rem .4rem .9rem;font-size:.82rem;color:var(--fg-muted);margin-bottom:1.8rem;box-shadow:var(--shadow-sm);}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 3px rgba(34,197,94,.18);}
+.hero-badge .pill{background:var(--accent-tint);color:var(--accent);font-weight:600;padding:.18rem .6rem;border-radius:var(--radius-pill);font-size:.74rem;}
+.hero-headline{font-size:clamp(2.5rem,6vw,4.4rem);margin-bottom:1.4rem;letter-spacing:-.04em;}
+.hero-sub{font-size:1.18rem;color:var(--fg-muted);max-width:600px;margin:0 auto 2.4rem;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:2.6rem;}
+.hero-proof{display:inline-flex;align-items:center;gap:14px;color:var(--fg-muted);font-size:.92rem;}
+.avatar-stack{display:flex;}
+.avatar{width:34px;height:34px;border-radius:50%;border:2px solid #fff;margin-left:-10px;box-shadow:var(--shadow-sm);}
+.avatar-stack .avatar:first-child{margin-left:0;}
+.hero-proof strong{color:var(--fg);}
+
+.fade-up{opacity:0;transform:translateY(22px);animation:fadeUp .7s ease forwards;}
+.fade-up[data-delay="0"]{animation-delay:.05s;}
+.fade-up[data-delay="1"]{animation-delay:.16s;}
+.fade-up[data-delay="2"]{animation-delay:.27s;}
+.fade-up[data-delay="3"]{animation-delay:.38s;}
+.fade-up[data-delay="4"]{animation-delay:.49s;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+.section .fade-up,.stat-card.fade-up{animation:none;opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s;}
+.section .fade-up.in-view,.stat-card.fade-up.in-view{opacity:1;transform:translateY(0);}
+
+.marquee-section{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:34px 0;background:var(--bg-soft);}
+.marquee-label{text-align:center;font-size:.8rem;font-weight:500;letter-spacing:.04em;color:var(--fg-faint);margin-bottom:24px;text-transform:uppercase;}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);}
+.marquee-track{display:flex;width:max-content;gap:46px;animation:marqueeScroll 38s linear infinite;}
+.marquee-item{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--fg-muted);white-space:nowrap;transition:color .25s;}
+.marquee-item:hover{color:var(--accent);}
+.tech-icon{width:24px;height:24px;flex-shrink:0;color:var(--fg);opacity:.78;transition:color .25s,opacity .25s;}
+.marquee-item:hover .tech-icon{color:var(--accent);opacity:1;}
+@keyframes marqueeScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+.stats-section{max-width:var(--container);margin:0 auto;padding:var(--section-pad) 24px;}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:38px;box-shadow:var(--shadow-sm);transition:box-shadow .25s,transform .25s;}
+.stat-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+.stat-num{font-family:var(--font-display);font-size:clamp(2.6rem,4.8vw,3.4rem);font-weight:700;color:var(--accent);letter-spacing:-.03em;}
+.stat-label{font-family:var(--font-display);font-weight:600;margin:.3rem 0 .5rem;font-size:1.05rem;}
+.stat-sub{color:var(--fg-muted);font-size:.92rem;}
+@media(max-width:760px){.stats-grid{grid-template-columns:1fr;}}
+
+.offerings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.offer-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:34px;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s,border-color .25s;}
+.offer-card:hover{transform:translateY(-5px);border-color:var(--accent-soft);box-shadow:var(--shadow-lg);}
+.offer-card-featured{background:linear-gradient(180deg,var(--bg-tint),#fff);border-color:var(--accent-soft);}
+.offer-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;background:var(--accent-tint);color:var(--accent);}
+.offer-icon-svg{width:24px;height:24px;}
+.offer-card h3{font-size:1.2rem;margin-bottom:.6rem;letter-spacing:-.02em;}
+.offer-card>p{color:var(--fg-muted);font-size:.94rem;margin-bottom:1.2rem;}
+.offer-list{display:flex;flex-direction:column;gap:9px;margin-bottom:1.5rem;}
+.offer-list li{position:relative;padding-left:24px;font-size:.88rem;color:var(--fg-muted);}
+.offer-list li::before{content:'';position:absolute;left:0;top:.18em;width:16px;height:16px;border-radius:50%;background:var(--accent-tint);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%230B5FFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;}
+.offer-link{font-size:.88rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:4px;transition:gap .2s;}
+.offer-link:hover{gap:8px;}
+@media(max-width:980px){.offerings-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.offerings-grid{grid-template-columns:1fr;}}
+
+.portfolio-filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:40px;}
+.filter-pill{border:1px solid var(--border-strong);border-radius:var(--radius-pill);padding:.55rem 1.2rem;font-size:.86rem;font-weight:500;color:var(--fg-muted);background:#fff;transition:all .2s;}
+.filter-pill:hover{color:var(--accent);border-color:var(--accent);}
+.filter-pill.is-active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.portfolio-card{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-card);box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;}
+.portfolio-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+.portfolio-card.is-hidden{display:none;}
+.portfolio-thumb{height:168px;position:relative;display:flex;align-items:flex-end;padding:16px;}
+.portfolio-tag{background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:var(--radius-pill);font-size:.74rem;font-weight:600;color:var(--accent);padding:.3rem .8rem;backdrop-filter:blur(6px);}
+.portfolio-card h3{font-size:1.06rem;padding:22px 22px 0;letter-spacing:-.02em;}
+.portfolio-card p{color:var(--fg-muted);font-size:.9rem;padding:8px 22px 24px;}
+@media(max-width:980px){.portfolio-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.portfolio-grid{grid-template-columns:1fr;}}
+
+.process-wrap{background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--radius-xl);padding:16px 40px;}
+.process-step{display:flex;gap:30px;padding:30px 0;border-bottom:1px solid var(--border);}
+.process-step:last-child{border-bottom:none;}
+.process-num{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--accent);background:var(--accent-tint);width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.process-step h3{font-size:1.18rem;margin-bottom:.4rem;letter-spacing:-.02em;}
+.process-step p{color:var(--fg-muted);max-width:520px;}
+@media(max-width:560px){.process-wrap{padding:8px 22px;}.process-step{gap:18px;}}
+
+.testimonial-hero{background:linear-gradient(160deg,var(--accent),#0848C9);color:#fff;border-radius:var(--radius-xl);padding:52px;margin-bottom:24px;box-shadow:var(--shadow-lg);}
+.testimonial-hero .eyebrow{background:rgba(255,255,255,.16);color:#fff;}
+.testimonial-hero-quote{font-family:var(--font-display);font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:600;line-height:1.35;margin-bottom:28px;letter-spacing:-.02em;color:#fff;}
+.testimonial-hero-meta{display:flex;align-items:center;gap:14px;}
+.testimonial-hero-meta .avatar{border-color:rgba(255,255,255,.4);}
+.testimonial-name{font-weight:600;font-size:.96rem;}
+.testimonial-role{color:var(--fg-muted);font-size:.85rem;}
+.testimonial-hero .testimonial-role{color:rgba(255,255,255,.8);}
+.testimonial-track{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.testimonial-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-sm);transition:box-shadow .25s,transform .25s;}
+.testimonial-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+.testimonial-card .quote{font-size:.95rem;color:var(--fg);margin:12px 0 18px;}
+.testimonial-stars{color:#FBBF24;letter-spacing:2px;font-size:.92rem;}
+@media(max-width:880px){.testimonial-track{grid-template-columns:1fr;}.testimonial-hero{padding:38px;}}
+
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch;}
+.price-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:38px;display:flex;flex-direction:column;box-shadow:var(--shadow-sm);transition:box-shadow .25s,transform .25s;}
+.price-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+.price-card-featured{border:2px solid var(--accent);position:relative;box-shadow:var(--shadow-lg);}
+.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.72rem;font-weight:600;padding:.32rem 1rem;border-radius:var(--radius-pill);white-space:nowrap;}
+.price-card h3{font-size:1.1rem;margin-bottom:.6rem;}
+.price-tag{font-family:var(--font-display);font-size:2.1rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.03em;}
+.price-tag small{font-size:.95rem;font-weight:500;color:var(--fg-faint);}
+.price-desc{color:var(--fg-muted);font-size:.92rem;margin-bottom:1.5rem;}
+.price-list{display:flex;flex-direction:column;gap:11px;flex:1;}
+.price-list li{position:relative;padding-left:26px;font-size:.9rem;color:var(--fg-muted);}
+.price-list li::before{content:'';position:absolute;left:0;top:.1em;width:18px;height:18px;border-radius:50%;background:var(--accent-tint);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%230B5FFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;}
+@media(max-width:980px){.pricing-grid{grid-template-columns:1fr;}}
+
+.mid-cta{max-width:var(--container);margin:0 auto;padding:0 24px;}
+.mid-cta-inner{background:var(--fg);color:#fff;border-radius:var(--radius-xl);padding:56px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;overflow:hidden;position:relative;}
+.mid-cta-inner::after{content:'';position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(11,95,255,.45),transparent 65%);}
+.mid-cta-inner h2{font-size:clamp(1.5rem,2.8vw,2.1rem);max-width:520px;color:#fff;position:relative;z-index:1;letter-spacing:-.03em;}
+.mid-cta-inner .btn{position:relative;z-index:1;}
+@media(max-width:560px){.mid-cta-inner{padding:38px;}}
+
+.accordion{max-width:760px;margin:0 auto;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-card);box-shadow:var(--shadow-sm);}
+.accordion-item{border-bottom:1px solid var(--border);}
+.accordion-item:last-child{border-bottom:none;}
+.accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:24px 26px;text-align:left;font-family:var(--font-display);font-weight:600;font-size:1.04rem;transition:color .2s;}
+.accordion-trigger:hover{color:var(--accent);}
+.accordion-icon{font-size:1.4rem;color:var(--accent);transition:transform .3s;flex-shrink:0;margin-left:16px;line-height:1;}
+.accordion-item.is-open .accordion-icon{transform:rotate(45deg);}
+.accordion-panel{max-height:0;overflow:hidden;transition:max-height .35s;}
+.accordion-panel p{color:var(--fg-muted);padding:0 26px 24px;}
+
+.final-cta{max-width:var(--container);margin:0 auto;padding:var(--section-pad) 24px;}
+.final-cta-inner{max-width:760px;margin:0 auto;background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--radius-xl);padding:52px;box-shadow:var(--shadow-sm);}
+.final-cta-title{font-size:clamp(1.9rem,3.8vw,2.7rem);margin-bottom:.9rem;letter-spacing:-.03em;}
+.final-cta-sub{color:var(--fg-muted);font-size:1.06rem;margin-bottom:2.4rem;}
+.contact-form{display:flex;flex-direction:column;gap:18px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.form-field label{display:block;font-size:.85rem;font-weight:500;color:var(--fg);margin-bottom:.5rem;}
+.form-confirm{font-size:.92rem;font-weight:500;color:#16A34A;min-height:1.2em;}
+@media(max-width:600px){.form-row{grid-template-columns:1fr;}.final-cta-inner{padding:34px;}}
+
+.footer{border-top:1px solid var(--border);padding-top:72px;background:var(--bg-soft);}
+.footer-inner{max-width:var(--container);margin:0 auto;padding:0 24px 56px;display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:40px;}
+.footer-brand p{color:var(--fg-muted);font-size:.92rem;margin:16px 0 22px;max-width:300px;}
+.footer-subscribe{display:flex;gap:8px;max-width:340px;}
+.footer-col h4{font-family:var(--font-display);font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--fg-faint);margin-bottom:18px;}
+.footer-col{display:flex;flex-direction:column;gap:12px;font-size:.92rem;color:var(--fg-muted);}
+.footer-col a:hover{color:var(--accent);}
+.footer-legal{border-top:1px solid var(--border);max-width:var(--container);margin:0 auto;padding:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.82rem;color:var(--fg-faint);}
+.footer-legal-links{display:flex;gap:20px;}
+.footer-legal-links a:hover{color:var(--accent);}
+@media(max-width:760px){.footer-inner{grid-template-columns:1fr 1fr;}.footer-brand{grid-column:1/-1;}}
+@media(max-width:480px){.footer-inner{grid-template-columns:1fr;}.footer-subscribe{flex-direction:column;}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo"><span class="logo-mark">F&amp;L</span><span class="logo-word">Forge&nbsp;&amp;&nbsp;Loop</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta"><a href="#contact" class="btn btn-pill btn-primary">Book a consultation</a></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-grid-lines" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-badge fade-up" data-delay="0"><span class="dot"></span> Now booking Q3 projects <span class="pill">3 slots left</span></div>
+      <h1 class="hero-headline fade-up" data-delay="1">The commerce and software your <span class="accent-text">growth plan</span> already promised.</h1>
+      <p class="hero-sub fade-up" data-delay="2">Forge &amp; Loop is a development studio for Shopify builds, AI agents, and custom SaaS products — shipped by a team that's done it before, not figuring it out on your invoice.</p>
+      <div class="hero-actions fade-up" data-delay="3">
+        <a href="#contact" class="btn btn-pill btn-primary btn-lg">Book a free consultation</a>
+        <a href="#work" class="btn btn-pill btn-ghost btn-lg">View our work</a>
+      </div>
+      <div class="hero-proof fade-up" data-delay="4">
+        <div class="avatar-stack" aria-hidden="true">
+          <span class="avatar" style="background:linear-gradient(135deg,#0B5FFF,#3D7BFF)"></span>
+          <span class="avatar" style="background:linear-gradient(135deg,#22C55E,#16A34A)"></span>
+          <span class="avatar" style="background:linear-gradient(135deg,#F59E0B,#F97316)"></span>
+          <span class="avatar" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9)"></span>
+        </div>
+        <p><strong>4.9/5</strong> average client rating across 120+ shipped projects</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="marquee-section" aria-label="Technologies we work with">
+    <p class="marquee-label">Built with the stack your engineers already trust</p>
+    <div class="marquee"><div class="marquee-track"><span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.337 23.979l7.216-1.561s-2.604-17.613-2.625-17.73c-.018-.116-.114-.192-.211-.192s-1.929-.136-1.929-.136-1.275-1.274-1.439-1.411c-.045-.037-.075-.057-.121-.074l-.914 21.104h.023zM11.71 11.305s-.81-.424-1.774-.424c-1.447 0-1.504.906-1.504 1.141 0 1.232 3.24 1.715 3.24 4.629 0 2.295-1.44 3.76-3.406 3.76-2.354 0-3.54-1.465-3.54-1.465l.646-2.086s1.245 1.066 2.28 1.066c.675 0 .975-.545.975-.932 0-1.619-2.654-1.694-2.654-4.359-.034-2.237 1.571-4.416 4.827-4.416 1.257 0 1.875.361 1.875.361l-.945 2.715-.02.01zM11.17.83c.136 0 .271.038.405.135-.984.465-2.064 1.639-2.508 3.992-.656.213-1.293.405-1.889.578C7.697 3.75 8.951.84 11.17.84V.83zm1.235 2.949v.135c-.754.232-1.583.484-2.394.736.466-1.777 1.333-2.645 2.085-2.971.193.501.309 1.176.309 2.1zm.539-2.234c.694.074 1.141.867 1.429 1.755-.349.114-.735.231-1.158.366v-.252c0-.752-.096-1.371-.271-1.871v.002zm2.992 1.289c-.02 0-.06.021-.078.021s-.289.075-.714.21c-.423-1.233-1.176-2.37-2.508-2.37h-.115C12.135.209 11.669 0 11.265 0 8.159 0 6.675 3.877 6.21 5.846c-1.194.365-2.063.636-2.16.674-.675.213-.694.232-.772.87-.075.462-1.83 14.063-1.83 14.063L15.009 24l.927-21.166z"/></svg>Shopify</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"/></svg>React</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z"/></svg>Next.js</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z"/></svg>Node.js</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg>Python</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.796 0a6.93 6.93 0 0 0-4.91 2.019L5.451 5.455l3.273 3.27 3.432-3.432a2.284 2.284 0 0 1 3.277 0 2.28 2.28 0 0 1 0 3.275L12 12.001l3.273 3.273 3.433-3.435c2.692-2.692 2.692-7.127 0-9.82A6.92 6.92 0 0 0 13.796 0m-5.07 8.728-3.433 3.434c-2.692 2.693-2.692 7.126 0 9.819A6.92 6.92 0 0 0 10.203 24a6.93 6.93 0 0 0 4.911-2.02l3.432-3.432-3.271-3.272-3.433 3.433a2.284 2.284 0 0 1-3.277 0 2.28 2.28 0 0 1 0-3.276L12 12z"/></svg>LangChain</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.28 9.82a5.98 5.98 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.51-2.9A6 6 0 0 0 4.98 4.18a5.98 5.98 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.1 5.98 5.98 0 0 0 .51 4.9 6.05 6.05 0 0 0 6.52 2.9A6 6 0 0 0 19 19.81a5.98 5.98 0 0 0 4-2.9 6.05 6.05 0 0 0-.73-7.1zM13.4 21.6a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.78.78 0 0 0 .4-.68v-6.74l2.02 1.17a.07.07 0 0 1 .04.06v5.58a4.5 4.5 0 0 1-4.5 4.49zM3.74 17.47a4.48 4.48 0 0 1-.54-3.01l.14.09 4.78 2.76a.78.78 0 0 0 .78 0l5.84-3.37v2.33a.07.07 0 0 1-.03.06l-4.84 2.79a4.5 4.5 0 0 1-6.13-1.65zM2.48 7.85a4.48 4.48 0 0 1 2.35-1.97v5.68a.78.78 0 0 0 .39.68l5.81 3.35-2.02 1.17a.07.07 0 0 1-.07 0l-4.83-2.8a4.5 4.5 0 0 1-1.63-6.1zm16.6 3.86l-5.84-3.39 2.02-1.16a.07.07 0 0 1 .07 0l4.83 2.79a4.49 4.49 0 0 1-.68 8.1v-5.67a.78.78 0 0 0-.4-.67zm2.01-3.03l-.14-.08-4.77-2.78a.78.78 0 0 0-.79 0L9.56 9.2V6.86a.07.07 0 0 1 .03-.06l4.83-2.79a4.49 4.49 0 0 1 6.67 4.65zM8.46 12.85l-2.02-1.17a.07.07 0 0 1-.04-.05V6.05a4.49 4.49 0 0 1 7.36-3.45l-.14.08-4.78 2.76a.78.78 0 0 0-.4.68zm1.1-2.36l2.6-1.5 2.6 1.5v3l-2.6 1.5-2.6-1.5z"/></svg>OpenAI</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg>Anthropic</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.76 10.27c0 .3.03.54.09.72.06.18.15.37.27.58.04.07.06.14.06.2 0 .08-.05.17-.17.25l-.56.38a.43.43 0 0 1-.23.08c-.09 0-.18-.04-.27-.13a2.7 2.7 0 0 1-.32-.42 6.9 6.9 0 0 1-.28-.53c-.7.82-1.57 1.23-2.62 1.23-.75 0-1.35-.21-1.78-.64-.44-.43-.66-1-.66-1.71 0-.76.27-1.37.8-1.84.55-.46 1.27-.7 2.18-.7.3 0 .61.03.94.08.33.04.67.11 1.03.19v-.66c0-.68-.14-1.15-.42-1.43-.29-.27-.78-.4-1.47-.4-.31 0-.64.03-.97.11-.34.08-.66.18-.98.3a2.6 2.6 0 0 1-.32.12.55.55 0 0 1-.14.02c-.13 0-.19-.09-.19-.28v-.44c0-.15.02-.26.06-.32.04-.07.12-.13.24-.2.31-.16.69-.3 1.13-.4a5.4 5.4 0 0 1 1.4-.17c1.06 0 1.84.24 2.34.73.49.48.74 1.22.74 2.21v2.91zM3.86 11.4c.29 0 .59-.05.9-.16.32-.1.6-.3.83-.56.14-.17.24-.36.3-.57.05-.22.08-.48.08-.78v-.38a7.4 7.4 0 0 0-.82-.15 6.7 6.7 0 0 0-.84-.06c-.6 0-1.04.12-1.33.36-.29.23-.43.57-.43 1.01 0 .42.1.73.32.94.21.21.51.31.9.31zm5.73.78c-.17 0-.28-.03-.36-.1-.07-.05-.14-.18-.2-.36L7.5 5.45a1.61 1.61 0 0 1-.08-.37c0-.15.07-.23.22-.23h.87c.18 0 .3.03.37.1.07.05.13.18.18.36l1.2 4.73 1.11-4.73c.05-.18.1-.31.18-.36a.65.65 0 0 1 .38-.1h.71c.18 0 .3.03.38.1.07.05.14.18.18.36l1.13 4.79 1.23-4.79c.06-.18.13-.31.2-.36a.62.62 0 0 1 .36-.1h.83c.15 0 .23.08.23.23 0 .04 0 .09-.02.14a1.2 1.2 0 0 1-.06.23l-1.7 5.47c-.06.18-.12.31-.2.36a.6.6 0 0 1-.36.1h-.76c-.18 0-.3-.03-.38-.1-.07-.06-.14-.19-.18-.37l-1.1-4.6-1.1 4.6c-.04.18-.1.31-.18.37a.6.6 0 0 1-.38.1zm9.17.24c-.46 0-.92-.05-1.36-.16-.44-.1-.78-.22-1.01-.36-.14-.08-.24-.17-.27-.25a.63.63 0 0 1-.06-.25v-.46c0-.19.07-.28.2-.28.06 0 .11.01.17.03l.23.1c.31.14.66.25 1.02.32.38.08.74.11 1.12.11.59 0 1.05-.1 1.37-.31.32-.2.49-.5.49-.88 0-.26-.08-.48-.25-.66-.17-.17-.49-.33-.95-.48l-1.37-.43c-.69-.22-1.2-.54-1.51-.97a2.27 2.27 0 0 1-.47-1.38c0-.4.09-.75.26-1.05.17-.3.4-.57.69-.78.29-.22.62-.38 1-.49.39-.11.8-.16 1.22-.16.21 0 .43.01.64.04l.62.11c.2.05.38.1.55.16.17.06.3.12.4.18.13.08.22.16.28.25.05.08.08.19.08.33v.43c0 .19-.07.29-.2.29a.92.92 0 0 1-.34-.11 4.1 4.1 0 0 0-1.7-.34c-.54 0-.96.08-1.25.26-.29.17-.44.44-.44.81 0 .26.1.48.28.66.18.17.53.35 1.03.51l1.34.43c.68.22 1.17.52 1.46.91.3.38.44.83.44 1.32 0 .41-.09.78-.25 1.1-.17.33-.4.61-.7.84-.3.24-.66.41-1.07.54-.44.13-.89.19-1.39.19z"/><path d="M21.7 16.93c-2.35 1.73-5.76 2.65-8.7 2.65-4.12 0-7.83-1.52-10.64-4.06-.22-.2-.02-.47.24-.32 3.03 1.77 6.78 2.83 10.66 2.83 2.6 0 5.46-.54 8.1-1.66.4-.17.73.26.34.56z"/><path d="M22.68 15.81c-.3-.38-1.99-.18-2.74-.09-.23.03-.27-.17-.06-.32 1.34-.94 3.55-.67 3.81-.36.26.32-.07 2.53-1.33 3.59-.2.16-.38.07-.3-.14.29-.7.92-2.3.62-2.68z"/></svg>AWS</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.19 2.38a9.344 9.344 0 0 0-9.234 6.893c.053-.02-.055.013 0 0-3.875 2.551-3.922 8.11-.247 10.941l.006-.007-.007.03a6.717 6.717 0 0 0 4.077 1.356h5.173l.03.03h5.192c6.687.053 9.376-8.605 3.835-12.35a9.365 9.365 0 0 0-2.821-4.552l-.043.043.006-.05A9.344 9.344 0 0 0 12.19 2.38zm-.358 4.146c1.244-.04 2.518.368 3.486 1.15a5.186 5.186 0 0 1 1.862 4.078v.518c3.53-.07 3.53 5.262 0 5.193h-5.193l-.008.009v-.04H6.785a2.59 2.59 0 0 1-1.067-.23h.001a2.597 2.597 0 1 1 3.437-3.437l3.013-3.012A6.747 6.747 0 0 0 8.11 8.24c.018-.01.04-.026.054-.023a5.186 5.186 0 0 1 3.67-1.69z"/></svg>Google Cloud</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z"/></svg>Docker</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.204 14.35l.007.01-.999 2.413a5.171 5.171 0 0 1-2.075-2.597l2.578-.437.004.005a.44.44 0 0 1 .484.606zm-.833-2.129a.44.44 0 0 0 .173-.756l.002-.011L7.585 9.7a5.143 5.143 0 0 0-.73 3.255l2.514-.725.002-.009zm1.145-1.98a.44.44 0 0 0 .699-.337l.01-.005.15-2.62a5.144 5.144 0 0 0-3.01 1.442l2.147 1.523.004-.002zm.76 2.75l.723.349.722-.347.18-.78-.5-.623h-.804l-.5.623.179.779zm1.5-3.095a.44.44 0 0 0 .7.336l.008.003 2.134-1.513a5.188 5.188 0 0 0-2.992-1.442l.148 2.615.002.001zm10.876 5.97l-5.773 7.181a1.6 1.6 0 0 1-1.248.594l-9.261.003a1.6 1.6 0 0 1-1.247-.596l-5.776-7.18a1.583 1.583 0 0 1-.307-1.34L2.1 5.573c.108-.47.425-.864.863-1.073L11.305.513a1.606 1.606 0 0 1 1.385 0l8.345 3.985c.438.209.755.604.863 1.073l2.062 8.955c.108.47-.005.963-.308 1.34zm-3.289-2.057c-.042-.01-.103-.026-.145-.034-.174-.033-.315-.025-.479-.038-.35-.037-.638-.067-.895-.148-.105-.04-.18-.165-.216-.216l-.201-.059a6.45 6.45 0 0 0-.105-2.332 6.465 6.465 0 0 0-.936-2.163c.052-.047.15-.133.177-.159.008-.09.001-.183.094-.282.197-.185.444-.338.743-.522.142-.084.273-.137.415-.242.032-.024.076-.062.11-.089.24-.191.295-.52.123-.736-.172-.216-.506-.236-.745-.045-.034.027-.08.062-.111.088-.134.116-.217.23-.33.35-.246.25-.45.458-.673.609-.097.056-.239.037-.303.033l-.19.135a6.545 6.545 0 0 0-4.146-2.003l-.012-.223c-.065-.062-.143-.115-.163-.25-.022-.268.015-.557.057-.905.023-.163.061-.298.068-.475.001-.04-.001-.099-.001-.142 0-.306-.224-.555-.5-.555-.275 0-.499.249-.499.555l.001.014c0 .041-.002.092 0 .128.006.177.044.312.067.475.042.348.078.637.056.906a.545.545 0 0 1-.162.258l-.012.211a6.424 6.424 0 0 0-4.166 2.003 8.373 8.373 0 0 1-.18-.128c-.09.012-.18.04-.297-.029-.223-.15-.427-.358-.673-.608-.113-.12-.195-.234-.329-.349-.03-.026-.077-.062-.111-.088a.594.594 0 0 0-.348-.132.481.481 0 0 0-.398.176c-.172.216-.117.546.123.737l.007.005.104.083c.142.105.272.159.414.242.299.185.546.338.743.522.076.082.09.226.1.288l.16.143a6.462 6.462 0 0 0-1.02 4.506l-.208.06c-.055.072-.133.184-.215.217-.257.081-.546.11-.895.147-.164.014-.305.006-.48.039-.037.007-.09.02-.133.03l-.004.002-.007.002c-.295.071-.484.342-.423.608.061.267.349.429.645.365l.007-.001.01-.003.129-.029c.17-.046.294-.113.448-.172.33-.118.604-.217.87-.256.112-.009.23.069.288.101l.217-.037a6.5 6.5 0 0 0 2.88 3.596l-.09.218c.033.084.069.199.044.282-.097.252-.263.517-.452.813-.091.136-.185.242-.268.399-.02.037-.045.095-.064.134-.128.275-.034.591.213.71.248.12.556-.007.69-.282v-.002c.02-.039.046-.09.062-.127.07-.162.094-.301.144-.458.132-.332.205-.68.387-.897.05-.06.13-.082.215-.105l.113-.205a6.453 6.453 0 0 0 4.609.012l.106.192c.086.028.18.042.256.155.136.232.229.507.342.84.05.156.074.295.145.457.016.037.043.09.062.129.133.276.442.402.69.282.247-.118.341-.435.213-.71-.02-.039-.045-.096-.065-.134-.083-.156-.177-.261-.268-.398-.19-.296-.346-.541-.443-.793-.04-.13.007-.21.038-.294-.018-.022-.059-.144-.083-.202a6.499 6.499 0 0 0 2.88-3.622c.064.01.176.03.213.038.075-.05.144-.114.28-.104.266.039.54.138.87.256.154.06.277.128.448.173.036.01.088.019.13.028l.009.003.007.001c.297.064.584-.098.645-.365.06-.266-.128-.537-.423-.608zM16.4 9.701l-1.95 1.746v.005a.44.44 0 0 0 .173.757l.003.01 2.526.728a5.199 5.199 0 0 0-.108-1.674A5.208 5.208 0 0 0 16.4 9.7zm-4.013 5.325a.437.437 0 0 0-.404-.232.44.44 0 0 0-.372.233h-.002l-1.268 2.292a5.164 5.164 0 0 0 3.326.003l-1.27-2.296h-.01zm1.888-1.293a.44.44 0 0 0-.27.036.44.44 0 0 0-.214.572l-.003.004 1.01 2.438a5.15 5.15 0 0 0 2.081-2.615l-2.6-.44-.004.005z"/></svg>Kubernetes</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></svg>Stripe</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.337 23.979l7.216-1.561s-2.604-17.613-2.625-17.73c-.018-.116-.114-.192-.211-.192s-1.929-.136-1.929-.136-1.275-1.274-1.439-1.411c-.045-.037-.075-.057-.121-.074l-.914 21.104h.023zM11.71 11.305s-.81-.424-1.774-.424c-1.447 0-1.504.906-1.504 1.141 0 1.232 3.24 1.715 3.24 4.629 0 2.295-1.44 3.76-3.406 3.76-2.354 0-3.54-1.465-3.54-1.465l.646-2.086s1.245 1.066 2.28 1.066c.675 0 .975-.545.975-.932 0-1.619-2.654-1.694-2.654-4.359-.034-2.237 1.571-4.416 4.827-4.416 1.257 0 1.875.361 1.875.361l-.945 2.715-.02.01zM11.17.83c.136 0 .271.038.405.135-.984.465-2.064 1.639-2.508 3.992-.656.213-1.293.405-1.889.578C7.697 3.75 8.951.84 11.17.84V.83zm1.235 2.949v.135c-.754.232-1.583.484-2.394.736.466-1.777 1.333-2.645 2.085-2.971.193.501.309 1.176.309 2.1zm.539-2.234c.694.074 1.141.867 1.429 1.755-.349.114-.735.231-1.158.366v-.252c0-.752-.096-1.371-.271-1.871v.002zm2.992 1.289c-.02 0-.06.021-.078.021s-.289.075-.714.21c-.423-1.233-1.176-2.37-2.508-2.37h-.115C12.135.209 11.669 0 11.265 0 8.159 0 6.675 3.877 6.21 5.846c-1.194.365-2.063.636-2.16.674-.675.213-.694.232-.772.87-.075.462-1.83 14.063-1.83 14.063L15.009 24l.927-21.166z"/></svg>Shopify</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"/></svg>React</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z"/></svg>Next.js</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z"/></svg>Node.js</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg>Python</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.796 0a6.93 6.93 0 0 0-4.91 2.019L5.451 5.455l3.273 3.27 3.432-3.432a2.284 2.284 0 0 1 3.277 0 2.28 2.28 0 0 1 0 3.275L12 12.001l3.273 3.273 3.433-3.435c2.692-2.692 2.692-7.127 0-9.82A6.92 6.92 0 0 0 13.796 0m-5.07 8.728-3.433 3.434c-2.692 2.693-2.692 7.126 0 9.819A6.92 6.92 0 0 0 10.203 24a6.93 6.93 0 0 0 4.911-2.02l3.432-3.432-3.271-3.272-3.433 3.433a2.284 2.284 0 0 1-3.277 0 2.28 2.28 0 0 1 0-3.276L12 12z"/></svg>LangChain</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.28 9.82a5.98 5.98 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.51-2.9A6 6 0 0 0 4.98 4.18a5.98 5.98 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.1 5.98 5.98 0 0 0 .51 4.9 6.05 6.05 0 0 0 6.52 2.9A6 6 0 0 0 19 19.81a5.98 5.98 0 0 0 4-2.9 6.05 6.05 0 0 0-.73-7.1zM13.4 21.6a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.78.78 0 0 0 .4-.68v-6.74l2.02 1.17a.07.07 0 0 1 .04.06v5.58a4.5 4.5 0 0 1-4.5 4.49zM3.74 17.47a4.48 4.48 0 0 1-.54-3.01l.14.09 4.78 2.76a.78.78 0 0 0 .78 0l5.84-3.37v2.33a.07.07 0 0 1-.03.06l-4.84 2.79a4.5 4.5 0 0 1-6.13-1.65zM2.48 7.85a4.48 4.48 0 0 1 2.35-1.97v5.68a.78.78 0 0 0 .39.68l5.81 3.35-2.02 1.17a.07.07 0 0 1-.07 0l-4.83-2.8a4.5 4.5 0 0 1-1.63-6.1zm16.6 3.86l-5.84-3.39 2.02-1.16a.07.07 0 0 1 .07 0l4.83 2.79a4.49 4.49 0 0 1-.68 8.1v-5.67a.78.78 0 0 0-.4-.67zm2.01-3.03l-.14-.08-4.77-2.78a.78.78 0 0 0-.79 0L9.56 9.2V6.86a.07.07 0 0 1 .03-.06l4.83-2.79a4.49 4.49 0 0 1 6.67 4.65zM8.46 12.85l-2.02-1.17a.07.07 0 0 1-.04-.05V6.05a4.49 4.49 0 0 1 7.36-3.45l-.14.08-4.78 2.76a.78.78 0 0 0-.4.68zm1.1-2.36l2.6-1.5 2.6 1.5v3l-2.6 1.5-2.6-1.5z"/></svg>OpenAI</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg>Anthropic</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.76 10.27c0 .3.03.54.09.72.06.18.15.37.27.58.04.07.06.14.06.2 0 .08-.05.17-.17.25l-.56.38a.43.43 0 0 1-.23.08c-.09 0-.18-.04-.27-.13a2.7 2.7 0 0 1-.32-.42 6.9 6.9 0 0 1-.28-.53c-.7.82-1.57 1.23-2.62 1.23-.75 0-1.35-.21-1.78-.64-.44-.43-.66-1-.66-1.71 0-.76.27-1.37.8-1.84.55-.46 1.27-.7 2.18-.7.3 0 .61.03.94.08.33.04.67.11 1.03.19v-.66c0-.68-.14-1.15-.42-1.43-.29-.27-.78-.4-1.47-.4-.31 0-.64.03-.97.11-.34.08-.66.18-.98.3a2.6 2.6 0 0 1-.32.12.55.55 0 0 1-.14.02c-.13 0-.19-.09-.19-.28v-.44c0-.15.02-.26.06-.32.04-.07.12-.13.24-.2.31-.16.69-.3 1.13-.4a5.4 5.4 0 0 1 1.4-.17c1.06 0 1.84.24 2.34.73.49.48.74 1.22.74 2.21v2.91zM3.86 11.4c.29 0 .59-.05.9-.16.32-.1.6-.3.83-.56.14-.17.24-.36.3-.57.05-.22.08-.48.08-.78v-.38a7.4 7.4 0 0 0-.82-.15 6.7 6.7 0 0 0-.84-.06c-.6 0-1.04.12-1.33.36-.29.23-.43.57-.43 1.01 0 .42.1.73.32.94.21.21.51.31.9.31zm5.73.78c-.17 0-.28-.03-.36-.1-.07-.05-.14-.18-.2-.36L7.5 5.45a1.61 1.61 0 0 1-.08-.37c0-.15.07-.23.22-.23h.87c.18 0 .3.03.37.1.07.05.13.18.18.36l1.2 4.73 1.11-4.73c.05-.18.1-.31.18-.36a.65.65 0 0 1 .38-.1h.71c.18 0 .3.03.38.1.07.05.14.18.18.36l1.13 4.79 1.23-4.79c.06-.18.13-.31.2-.36a.62.62 0 0 1 .36-.1h.83c.15 0 .23.08.23.23 0 .04 0 .09-.02.14a1.2 1.2 0 0 1-.06.23l-1.7 5.47c-.06.18-.12.31-.2.36a.6.6 0 0 1-.36.1h-.76c-.18 0-.3-.03-.38-.1-.07-.06-.14-.19-.18-.37l-1.1-4.6-1.1 4.6c-.04.18-.1.31-.18.37a.6.6 0 0 1-.38.1zm9.17.24c-.46 0-.92-.05-1.36-.16-.44-.1-.78-.22-1.01-.36-.14-.08-.24-.17-.27-.25a.63.63 0 0 1-.06-.25v-.46c0-.19.07-.28.2-.28.06 0 .11.01.17.03l.23.1c.31.14.66.25 1.02.32.38.08.74.11 1.12.11.59 0 1.05-.1 1.37-.31.32-.2.49-.5.49-.88 0-.26-.08-.48-.25-.66-.17-.17-.49-.33-.95-.48l-1.37-.43c-.69-.22-1.2-.54-1.51-.97a2.27 2.27 0 0 1-.47-1.38c0-.4.09-.75.26-1.05.17-.3.4-.57.69-.78.29-.22.62-.38 1-.49.39-.11.8-.16 1.22-.16.21 0 .43.01.64.04l.62.11c.2.05.38.1.55.16.17.06.3.12.4.18.13.08.22.16.28.25.05.08.08.19.08.33v.43c0 .19-.07.29-.2.29a.92.92 0 0 1-.34-.11 4.1 4.1 0 0 0-1.7-.34c-.54 0-.96.08-1.25.26-.29.17-.44.44-.44.81 0 .26.1.48.28.66.18.17.53.35 1.03.51l1.34.43c.68.22 1.17.52 1.46.91.3.38.44.83.44 1.32 0 .41-.09.78-.25 1.1-.17.33-.4.61-.7.84-.3.24-.66.41-1.07.54-.44.13-.89.19-1.39.19z"/><path d="M21.7 16.93c-2.35 1.73-5.76 2.65-8.7 2.65-4.12 0-7.83-1.52-10.64-4.06-.22-.2-.02-.47.24-.32 3.03 1.77 6.78 2.83 10.66 2.83 2.6 0 5.46-.54 8.1-1.66.4-.17.73.26.34.56z"/><path d="M22.68 15.81c-.3-.38-1.99-.18-2.74-.09-.23.03-.27-.17-.06-.32 1.34-.94 3.55-.67 3.81-.36.26.32-.07 2.53-1.33 3.59-.2.16-.38.07-.3-.14.29-.7.92-2.3.62-2.68z"/></svg>AWS</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.19 2.38a9.344 9.344 0 0 0-9.234 6.893c.053-.02-.055.013 0 0-3.875 2.551-3.922 8.11-.247 10.941l.006-.007-.007.03a6.717 6.717 0 0 0 4.077 1.356h5.173l.03.03h5.192c6.687.053 9.376-8.605 3.835-12.35a9.365 9.365 0 0 0-2.821-4.552l-.043.043.006-.05A9.344 9.344 0 0 0 12.19 2.38zm-.358 4.146c1.244-.04 2.518.368 3.486 1.15a5.186 5.186 0 0 1 1.862 4.078v.518c3.53-.07 3.53 5.262 0 5.193h-5.193l-.008.009v-.04H6.785a2.59 2.59 0 0 1-1.067-.23h.001a2.597 2.597 0 1 1 3.437-3.437l3.013-3.012A6.747 6.747 0 0 0 8.11 8.24c.018-.01.04-.026.054-.023a5.186 5.186 0 0 1 3.67-1.69z"/></svg>Google Cloud</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z"/></svg>Docker</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.204 14.35l.007.01-.999 2.413a5.171 5.171 0 0 1-2.075-2.597l2.578-.437.004.005a.44.44 0 0 1 .484.606zm-.833-2.129a.44.44 0 0 0 .173-.756l.002-.011L7.585 9.7a5.143 5.143 0 0 0-.73 3.255l2.514-.725.002-.009zm1.145-1.98a.44.44 0 0 0 .699-.337l.01-.005.15-2.62a5.144 5.144 0 0 0-3.01 1.442l2.147 1.523.004-.002zm.76 2.75l.723.349.722-.347.18-.78-.5-.623h-.804l-.5.623.179.779zm1.5-3.095a.44.44 0 0 0 .7.336l.008.003 2.134-1.513a5.188 5.188 0 0 0-2.992-1.442l.148 2.615.002.001zm10.876 5.97l-5.773 7.181a1.6 1.6 0 0 1-1.248.594l-9.261.003a1.6 1.6 0 0 1-1.247-.596l-5.776-7.18a1.583 1.583 0 0 1-.307-1.34L2.1 5.573c.108-.47.425-.864.863-1.073L11.305.513a1.606 1.606 0 0 1 1.385 0l8.345 3.985c.438.209.755.604.863 1.073l2.062 8.955c.108.47-.005.963-.308 1.34zm-3.289-2.057c-.042-.01-.103-.026-.145-.034-.174-.033-.315-.025-.479-.038-.35-.037-.638-.067-.895-.148-.105-.04-.18-.165-.216-.216l-.201-.059a6.45 6.45 0 0 0-.105-2.332 6.465 6.465 0 0 0-.936-2.163c.052-.047.15-.133.177-.159.008-.09.001-.183.094-.282.197-.185.444-.338.743-.522.142-.084.273-.137.415-.242.032-.024.076-.062.11-.089.24-.191.295-.52.123-.736-.172-.216-.506-.236-.745-.045-.034.027-.08.062-.111.088-.134.116-.217.23-.33.35-.246.25-.45.458-.673.609-.097.056-.239.037-.303.033l-.19.135a6.545 6.545 0 0 0-4.146-2.003l-.012-.223c-.065-.062-.143-.115-.163-.25-.022-.268.015-.557.057-.905.023-.163.061-.298.068-.475.001-.04-.001-.099-.001-.142 0-.306-.224-.555-.5-.555-.275 0-.499.249-.499.555l.001.014c0 .041-.002.092 0 .128.006.177.044.312.067.475.042.348.078.637.056.906a.545.545 0 0 1-.162.258l-.012.211a6.424 6.424 0 0 0-4.166 2.003 8.373 8.373 0 0 1-.18-.128c-.09.012-.18.04-.297-.029-.223-.15-.427-.358-.673-.608-.113-.12-.195-.234-.329-.349-.03-.026-.077-.062-.111-.088a.594.594 0 0 0-.348-.132.481.481 0 0 0-.398.176c-.172.216-.117.546.123.737l.007.005.104.083c.142.105.272.159.414.242.299.185.546.338.743.522.076.082.09.226.1.288l.16.143a6.462 6.462 0 0 0-1.02 4.506l-.208.06c-.055.072-.133.184-.215.217-.257.081-.546.11-.895.147-.164.014-.305.006-.48.039-.037.007-.09.02-.133.03l-.004.002-.007.002c-.295.071-.484.342-.423.608.061.267.349.429.645.365l.007-.001.01-.003.129-.029c.17-.046.294-.113.448-.172.33-.118.604-.217.87-.256.112-.009.23.069.288.101l.217-.037a6.5 6.5 0 0 0 2.88 3.596l-.09.218c.033.084.069.199.044.282-.097.252-.263.517-.452.813-.091.136-.185.242-.268.399-.02.037-.045.095-.064.134-.128.275-.034.591.213.71.248.12.556-.007.69-.282v-.002c.02-.039.046-.09.062-.127.07-.162.094-.301.144-.458.132-.332.205-.68.387-.897.05-.06.13-.082.215-.105l.113-.205a6.453 6.453 0 0 0 4.609.012l.106.192c.086.028.18.042.256.155.136.232.229.507.342.84.05.156.074.295.145.457.016.037.043.09.062.129.133.276.442.402.69.282.247-.118.341-.435.213-.71-.02-.039-.045-.096-.065-.134-.083-.156-.177-.261-.268-.398-.19-.296-.346-.541-.443-.793-.04-.13.007-.21.038-.294-.018-.022-.059-.144-.083-.202a6.499 6.499 0 0 0 2.88-3.622c.064.01.176.03.213.038.075-.05.144-.114.28-.104.266.039.54.138.87.256.154.06.277.128.448.173.036.01.088.019.13.028l.009.003.007.001c.297.064.584-.098.645-.365.06-.266-.128-.537-.423-.608zM16.4 9.701l-1.95 1.746v.005a.44.44 0 0 0 .173.757l.003.01 2.526.728a5.199 5.199 0 0 0-.108-1.674A5.208 5.208 0 0 0 16.4 9.7zm-4.013 5.325a.437.437 0 0 0-.404-.232.44.44 0 0 0-.372.233h-.002l-1.268 2.292a5.164 5.164 0 0 0 3.326.003l-1.27-2.296h-.01zm1.888-1.293a.44.44 0 0 0-.27.036.44.44 0 0 0-.214.572l-.003.004 1.01 2.438a5.15 5.15 0 0 0 2.081-2.615l-2.6-.44-.004.005z"/></svg>Kubernetes</span>
+        <span class="marquee-item"><svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></svg>Stripe</span>
+        </div></div>
+  </section>
+
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card fade-up"><p class="stat-num" data-count="120">0</p><p class="stat-label">Projects shipped</p><p class="stat-sub">Across Shopify, AI, and custom software builds since 2019.</p></div>
+      <div class="stat-card fade-up"><p class="stat-num" data-count="34" data-suffix="%">0</p><p class="stat-label">Avg. conversion lift</p><p class="stat-sub">Measured on Shopify storefront redesigns within 90 days.</p></div>
+      <div class="stat-card fade-up"><p class="stat-num" data-count="18" data-suffix=" countries">0</p><p class="stat-label">Clients served</p><p class="stat-sub">From bootstrapped DTC brands to funded SaaS teams.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="section-head">
+      <p class="eyebrow">What we build</p>
+      <h2 class="section-title">One team, four disciplines, zero handoff chaos</h2>
+      <p class="section-sub">Most agencies specialize in one lane. We keep Shopify, AI, and software engineering under one roof so your store, your automations, and your product actually talk to each other.</p>
+    </div>
+    <div class="offerings-grid">
+      <article class="offer-card">
+        <div class="offer-icon"><svg class="offer-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 10a4 4 0 0 1-8 0" />
+  <path d="M3.103 6.034h17.794" />
+  <path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z" /></svg></div>
+        <h3>Shopify development</h3>
+        <p>Theme builds, store migrations, and checkout work tuned for conversion, not just looks.</p>
+        <ul class="offer-list"><li>Custom theme &amp; store setup</li><li>Migrations from Magento, Woo, BigCommerce</li><li>Checkout &amp; subscription customization</li><li>Conversion rate optimization</li></ul>
+        <a href="#contact" class="offer-link">Talk Shopify &rarr;</a>
+      </article>
+      <article class="offer-card">
+        <div class="offer-icon"><svg class="offer-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 22V7a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1H2" />
+  <rect x="14" y="2" width="8" height="8" rx="1" /></svg></div>
+        <h3>Shopify app development</h3>
+        <p>Public, private, and embedded apps that extend Shopify exactly where the platform stops.</p>
+        <ul class="offer-list"><li>Public app store listings</li><li>Private &amp; embedded apps</li><li>Admin &amp; storefront API integrations</li><li>App review &amp; compliance support</li></ul>
+        <a href="#contact" class="offer-link">Scope an app &rarr;</a>
+      </article>
+      <article class="offer-card offer-card-featured">
+        <div class="offer-icon"><svg class="offer-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+  <path d="M20 2v4" />
+  <path d="M22 4h-4" />
+  <circle cx="4" cy="20" r="2" /></svg></div>
+        <h3>AI agents &amp; automation</h3>
+        <p>Production AI — not a chatbot demo. Agents and workflows that touch your real systems.</p>
+        <ul class="offer-list"><li>Custom AI agents &amp; LLM integration</li><li>RAG &amp; knowledge base systems</li><li>Workflow, CRM &amp; support automation</li><li>OpenAI &amp; Anthropic API integration</li></ul>
+        <a href="#contact" class="offer-link">Explore AI work &rarr;</a>
+      </article>
+      <article class="offer-card">
+        <div class="offer-icon"><svg class="offer-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="9" x="3" y="3" rx="1" />
+  <rect width="7" height="5" x="14" y="3" rx="1" />
+  <rect width="7" height="9" x="14" y="12" rx="1" />
+  <rect width="7" height="5" x="3" y="16" rx="1" /></svg></div>
+        <h3>Custom websites &amp; web apps</h3>
+        <p>Marketing sites, portals, and dashboards built to scale past launch day.</p>
+        <ul class="offer-list"><li>Corporate sites &amp; landing pages</li><li>Internal portals &amp; dashboards</li><li>Headless CMS builds</li><li>Performance &amp; SEO foundations</li></ul>
+        <a href="#contact" class="offer-link">Start a build &rarr;</a>
+      </article>
+      <article class="offer-card">
+        <div class="offer-icon"><svg class="offer-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z" />
+  <path d="m7 16.5-4.74-2.85" />
+  <path d="m7 16.5 5-3" />
+  <path d="M7 16.5v5.17" />
+  <path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z" />
+  <path d="m17 16.5-5-3" />
+  <path d="m17 16.5 4.74-2.85" />
+  <path d="M17 16.5v5.17" />
+  <path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z" />
+  <path d="M12 8 7.26 5.15" />
+  <path d="m12 8 4.74-2.85" />
+  <path d="M12 13.5V8" /></svg></div>
+        <h3>SaaS product development</h3>
+        <p>From MVP to billing and analytics — software built to actually become a product.</p>
+        <ul class="offer-list"><li>MVP &amp; greenfield builds</li><li>Auth, billing &amp; subscriptions</li><li>Usage analytics &amp; reporting</li><li>API-first architecture</li></ul>
+        <a href="#contact" class="offer-link">Plan your MVP &rarr;</a>
+      </article>
+      <article class="offer-card">
+        <div class="offer-icon"><svg class="offer-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 17H5" />
+  <path d="M19 7h-9" />
+  <circle cx="17" cy="17" r="3" />
+  <circle cx="7" cy="7" r="3" /></svg></div>
+        <h3>Custom software &amp; integrations</h3>
+        <p>The internal tools and system integrations that off-the-shelf software can't quite cover.</p>
+        <ul class="offer-list"><li>Internal tools, CRM &amp; ERP builds</li><li>Third-party API integrations</li><li>Reporting &amp; data pipelines</li><li>Digital transformation roadmaps</li></ul>
+        <a href="#contact" class="offer-link">Discuss systems &rarr;</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="section-head">
+      <p class="eyebrow">Selected work</p>
+      <h2 class="section-title">Real builds, real outcomes</h2>
+      <p class="section-sub">A sample of recent engagements across commerce, automation, and product.</p>
+    </div>
+    <div class="portfolio-filters" id="portfolioFilters">
+      <button class="filter-pill is-active" data-filter="all">All</button>
+      <button class="filter-pill" data-filter="shopify">Shopify</button>
+      <button class="filter-pill" data-filter="ai">AI</button>
+      <button class="filter-pill" data-filter="saas">SaaS</button>
+      <button class="filter-pill" data-filter="web">Web Development</button>
+      <button class="filter-pill" data-filter="automation">Automation</button>
+    </div>
+    <div class="portfolio-grid" id="portfolioGrid">
+      <article class="portfolio-card" data-cat="shopify"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#E7F0FF,#C9DBFF)"><span class="portfolio-tag">Shopify</span></div><h3>Storefront rebuild for a DTC skincare brand</h3><p>Full theme rebuild and checkout tuning. Mobile conversion up 41% in the first quarter post-launch.</p></article>
+      <article class="portfolio-card" data-cat="ai"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#E8F7F0,#C7EBDA)"><span class="portfolio-tag">AI</span></div><h3>Support agent for a logistics SaaS</h3><p>RAG-backed support agent deflecting 58% of inbound tickets within two months of launch.</p></article>
+      <article class="portfolio-card" data-cat="saas"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#F1ECFF,#DAD0FF)"><span class="portfolio-tag">SaaS</span></div><h3>MVP-to-Series-A platform for a fintech startup</h3><p>Billing, auth, and analytics built from zero. Shipped in 11 weeks ahead of a funding deadline.</p></article>
+      <article class="portfolio-card" data-cat="automation"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#FFF4E5,#FFE2BD)"><span class="portfolio-tag">Automation</span></div><h3>Inventory automation for a multi-brand retailer</h3><p>Connected five warehouse systems into one sync layer, cutting manual reconciliation by 30 hours a week.</p></article>
+      <article class="portfolio-card" data-cat="web"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#FFEAEA,#FFCFCF)"><span class="portfolio-tag">Web Development</span></div><h3>Investor-facing portal for a private equity firm</h3><p>Secure reporting dashboard replacing a static PDF workflow for 200+ limited partners.</p></article>
+      <article class="portfolio-card" data-cat="shopify ai"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#E7F0FF,#D7EFE4)"><span class="portfolio-tag">Shopify · AI</span></div><h3>AI product recommendation engine for a furniture brand</h3><p>On-site recommendation agent lifting average order value by 19% across the catalog.</p></article>
+    </div>
+  </section>
+
+  <section class="section section-tight" id="process">
+    <div class="section-head">
+      <p class="eyebrow">How we work</p>
+      <h2 class="section-title">From first call to shipped product</h2>
+      <p class="section-sub">The same four-stage process for every engagement, whether it's a storefront or a full SaaS build.</p>
+    </div>
+    <div class="process-wrap">
+      <div class="process-step"><span class="process-num">01</span><div><h3>Discovery &amp; scoping</h3><p>We map your goals, budget, and timeline into a concrete project brief — not a vague statement of work.</p></div></div>
+      <div class="process-step"><span class="process-num">02</span><div><h3>Architecture &amp; design</h3><p>Technical architecture and UI direction get signed off before a single line of production code is written.</p></div></div>
+      <div class="process-step"><span class="process-num">03</span><div><h3>Build in sprints</h3><p>Two-week sprints with working demos, so you're reviewing real progress, not a status slide.</p></div></div>
+      <div class="process-step"><span class="process-num">04</span><div><h3>Launch &amp; support</h3><p>We ship, monitor, and stay on for a defined support window — handoff documentation included, always.</p></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="testimonials">
+    <div class="section-head"><p class="eyebrow">Client results</p><h2 class="section-title">What it's like to work with us</h2></div>
+    <div class="testimonial-hero">
+      <p class="eyebrow">Featured</p>
+      <p class="testimonial-hero-quote">"Forge &amp; Loop rebuilt our checkout flow and our support agent in the same quarter — conversion was up 41%, and our support team got their afternoons back."</p>
+      <div class="testimonial-hero-meta"><span class="avatar" style="background:linear-gradient(135deg,#fff,#cdd)"></span><div><p class="testimonial-name">Priya Raman</p><p class="testimonial-role">Head of Growth, Lumen Skincare</p></div></div>
+    </div>
+    <div class="testimonial-track">
+      <div class="testimonial-card"><p class="testimonial-stars">★★★★★</p><p class="quote">"They scoped our MVP honestly instead of overselling. We launched on time and on budget."</p><p class="testimonial-name">Daniel Cho</p><p class="testimonial-role">Founder, Ledgerline</p></div>
+      <div class="testimonial-card"><p class="testimonial-stars">★★★★★</p><p class="quote">"Our inventory automation alone paid for the engagement within four months."</p><p class="testimonial-name">Marisol Vega</p><p class="testimonial-role">Ops Director, Norden Goods</p></div>
+      <div class="testimonial-card"><p class="testimonial-stars">★★★★★</p><p class="quote">"Best Shopify app team we've worked with. Clean code, clear communication, no surprises."</p><p class="testimonial-name">Ahmed Farouk</p><p class="testimonial-role">CTO, Crateful</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <div class="section-head"><p class="eyebrow">Investment</p><h2 class="section-title">Plans that match how you ship</h2><p class="section-sub">Every engagement starts with a scoped quote. These are starting points, not a price list — talk to us for specifics.</p></div>
+    <div class="pricing-grid">
+      <div class="price-card"><h3>Starter</h3><p class="price-tag">$6,500<small> from</small></p><p class="price-desc">A focused Shopify build or a single automation, shipped in 3–5 weeks.</p><ul class="price-list"><li>One core deliverable (store, app, or workflow)</li><li>Up to 2 stakeholder review rounds</li><li>30-day post-launch support</li></ul><a href="#contact" class="btn btn-pill btn-ghost btn-full">Get a quote</a></div>
+      <div class="price-card price-card-featured"><p class="price-badge">Most popular</p><h3>Growth</h3><p class="price-tag">$18,000<small> from</small></p><p class="price-desc">A full storefront, AI agent, or product build with ongoing iteration.</p><ul class="price-list"><li>Multi-phase build with sprint demos</li><li>Dedicated project lead</li><li>90-day post-launch support</li><li>CRM &amp; analytics integration included</li></ul><a href="#contact" class="btn btn-pill btn-primary btn-full">Get a quote</a></div>
+      <div class="price-card"><h3>Enterprise</h3><p class="price-tag">Custom</p><p class="price-desc">Multi-team SaaS platforms, digital transformation, and ongoing partnerships.</p><ul class="price-list"><li>Dedicated pod with architecture lead</li><li>SLA-backed support &amp; uptime targets</li><li>Security &amp; compliance review</li></ul><a href="#contact" class="btn btn-pill btn-ghost btn-full">Talk to sales</a></div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="mid-cta"><div class="mid-cta-inner"><h2>Have a project in mind? Let's scope it this week.</h2><a href="#contact" class="btn btn-pill btn-primary btn-lg">Book a free consultation</a></div></div>
+  </section>
+
+  <section class="section section-tight" id="faq">
+    <div class="section-head"><p class="eyebrow">Questions</p><h2 class="section-title">Frequently asked</h2></div>
+    <div class="accordion" id="accordion">
+      <div class="accordion-item is-open"><button class="accordion-trigger" aria-expanded="true"><span>How long does a typical project take?</span><span class="accordion-icon">+</span></button><div class="accordion-panel"><p>A focused Shopify build usually runs 3–5 weeks. AI agents and SaaS MVPs run 8–14 weeks depending on scope. You'll get a firm timeline after the discovery call, not a range padded for safety.</p></div></div>
+      <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>Do you work with teams that already have an engineering team?</span><span class="accordion-icon">+</span></button><div class="accordion-panel"><p>Often, yes. We frequently slot in for a specific build — a Shopify app, an AI agent, an integration — and hand off clean documentation so your internal team can maintain it afterward.</p></div></div>
+      <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>What does the AI agent work actually involve?</span><span class="accordion-icon">+</span></button><div class="accordion-panel"><p>Real integration work: connecting an LLM to your actual data and systems through RAG or tool use, with guardrails, logging, and a fallback to a human when the agent shouldn't handle something alone.</p></div></div>
+      <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>How is pricing structured?</span><span class="accordion-icon">+</span></button><div class="accordion-panel"><p>Fixed-price for well-scoped builds, time-and-materials for ongoing partnerships. You'll always see a written quote before any work begins — no open-ended hourly surprises.</p></div></div>
+      <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>What happens after launch?</span><span class="accordion-icon">+</span></button><div class="accordion-panel"><p>Every plan includes a post-launch support window. After that, you can move to a retainer, bring it in-house with our documentation, or call us back for the next phase.</p></div></div>
+    </div>
+  </section>
+
+  <section class="final-cta" id="contact">
+    <div class="final-cta-inner">
+      <p class="eyebrow">Let's talk</p>
+      <h2 class="final-cta-title">Tell us what you're building. We'll tell you what it takes.</h2>
+      <p class="final-cta-sub">Book a free 30-minute consultation, or send us your project details below.</p>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row"><div class="form-field"><label for="name">Name</label><input type="text" id="name" name="name" required></div><div class="form-field"><label for="company">Company</label><input type="text" id="company" name="company"></div></div>
+        <div class="form-row"><div class="form-field"><label for="email">Email</label><input type="email" id="email" name="email" required></div><div class="form-field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone"></div></div>
+        <div class="form-row"><div class="form-field"><label for="budget">Budget range</label><select id="budget" name="budget"><option value="">Select a range</option><option>Under $10,000</option><option>$10,000 – $25,000</option><option>$25,000 – $75,000</option><option>$75,000+</option></select></div><div class="form-field"><label for="timeline">Timeline</label><select id="timeline" name="timeline"><option value="">Select a timeline</option><option>ASAP</option><option>Within 1 month</option><option>1–3 months</option><option>Just exploring</option></select></div></div>
+        <div class="form-field"><label for="requirements">Project details</label><textarea id="requirements" name="requirements" rows="4" placeholder="What are you looking to build?" required></textarea></div>
+        <button type="submit" class="btn btn-pill btn-primary btn-lg btn-full-mobile">Send project details</button>
+        <p class="form-confirm" id="formConfirm" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#top" class="logo"><span class="logo-mark">F&amp;L</span><span class="logo-word">Forge&nbsp;&amp;&nbsp;Loop</span></a>
+      <p>Shopify, AI, and custom software — built by one team that ships.</p>
+      <form class="footer-subscribe" id="subscribeForm"><input type="email" placeholder="you@company.com" aria-label="Email address" required><button type="submit" class="btn btn-pill btn-primary">Subscribe</button></form>
+    </div>
+    <div class="footer-col"><h4>Services</h4><a href="#services">Shopify development</a><a href="#services">Shopify apps</a><a href="#services">AI agents &amp; automation</a><a href="#services">SaaS development</a></div>
+    <div class="footer-col"><h4>Company</h4><a href="#work">Our work</a><a href="#process">Process</a><a href="#pricing">Pricing</a><a href="#" id="careersLink">Careers</a></div>
+    <div class="footer-col"><h4>Connect</h4><a href="#contact">Contact</a><a href="#">LinkedIn</a><a href="#">X / Twitter</a><a href="#">GitHub</a></div>
+  </div>
+  <div class="footer-legal"><p>&copy; 2026 Forge &amp; Loop Studio. All rights reserved.</p><div class="footer-legal-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+const navToggle=document.getElementById('navToggle');
+const navLinks=document.getElementById('navLinks');
+const navCta=document.querySelector('.nav-cta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('is-scrolled',window.scrollY>20);},{passive:true});
+navToggle.addEventListener('click',()=>{const o=navLinks.classList.toggle('is-open');navCta.classList.toggle('is-open');navToggle.setAttribute('aria-expanded',String(o));});
+navLinks.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{navLinks.classList.remove('is-open');navCta.classList.remove('is-open');navToggle.setAttribute('aria-expanded','false');}));
+
+const fadeTargets=document.querySelectorAll('.section .fade-up,.stat-card.fade-up');
+const revealObserver=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');revealObserver.unobserve(e.target);}});},{threshold:.15});
+fadeTargets.forEach(el=>revealObserver.observe(el));
+
+const statNums=document.querySelectorAll('.stat-num');
+function animateCount(el){const t=parseInt(el.dataset.count,10);const s=el.dataset.suffix||'';const dur=1400;const start=performance.now();function tick(now){const p=Math.min((now-start)/dur,1);const e=1-Math.pow(1-p,3);el.textContent=Math.round(e*t)+s;if(p<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);}
+const statObserver=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){animateCount(e.target);statObserver.unobserve(e.target);}});},{threshold:.4});
+statNums.forEach(el=>statObserver.observe(el));
+
+const filterButtons=document.querySelectorAll('.filter-pill');
+const portfolioCards=document.querySelectorAll('.portfolio-card');
+filterButtons.forEach(btn=>btn.addEventListener('click',()=>{filterButtons.forEach(b=>b.classList.remove('is-active'));btn.classList.add('is-active');const f=btn.dataset.filter;portfolioCards.forEach(c=>{const cats=c.dataset.cat.split(' ');c.classList.toggle('is-hidden',!(f==='all'||cats.includes(f)));});}));
+
+const accordionItems=document.querySelectorAll('.accordion-item');
+function setPanelHeight(item,open){const p=item.querySelector('.accordion-panel');p.style.maxHeight=open?p.scrollHeight+'px':'0px';}
+accordionItems.forEach(item=>{const t=item.querySelector('.accordion-trigger');t.addEventListener('click',()=>{const open=item.classList.contains('is-open');accordionItems.forEach(o=>{o.classList.remove('is-open');o.querySelector('.accordion-trigger').setAttribute('aria-expanded','false');setPanelHeight(o,false);});if(!open){item.classList.add('is-open');t.setAttribute('aria-expanded','true');setPanelHeight(item,true);}});});
+window.addEventListener('load',()=>{const o=document.querySelector('.accordion-item.is-open');if(o)setPanelHeight(o,true);});
+
+const contactForm=document.getElementById('contactForm');
+const formConfirm=document.getElementById('formConfirm');
+contactForm.addEventListener('submit',(e)=>{e.preventDefault();formConfirm.textContent="Thanks — we'll be in touch within one business day.";contactForm.reset();});
+const subscribeForm=document.getElementById('subscribeForm');
+subscribeForm.addEventListener('submit',(e)=>{e.preventDefault();const i=subscribeForm.querySelector('input');i.value='';i.placeholder='Subscribed ✓';setTimeout(()=>{i.placeholder='you@company.com';},2500);});
+document.getElementById('careersLink').addEventListener('click',(e)=>{e.preventDefault();alert('Careers page coming soon — check back shortly.');});
+</script>
+</body>
+  </html>
